@@ -46,6 +46,16 @@ int Pooling_arm::forward(const Mat& bottom_blob, Mat& top_blob, const Option& op
 {
     if (adaptive_pooling)
     {
+		support_packing = false;
+
+		support_bf16_storage = false;
+		support_fp16_storage = false;
+		support_int8_storage = false;
+		support_image_storage = false;
+		support_tensor_storage = false;
+
+		use_int8_inference = false;
+		support_weight_fp16_storage = false;
         return Pooling::forward(bottom_blob, top_blob, opt);
     }
 
